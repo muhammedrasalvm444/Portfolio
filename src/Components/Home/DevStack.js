@@ -28,8 +28,8 @@ const DevStack = () => {
 
             <p className="mt-2 font-semibold">Javascript</p>
             <p className="mt-2 font-semibold">Next js</p>
-            <p className="mt-2 font-semibold">Redux</p>
-            <p className="mt-2 font-semibold">Zustand</p>
+            {/* <p className="mt-2 font-semibold">Redux</p>
+            <p className="mt-2 font-semibold">Zustand</p> */}
           </div>
           <div className="text-right md:text-left md:mt-6">
             <h1 className="text-xl font-bold">UI / UX</h1>

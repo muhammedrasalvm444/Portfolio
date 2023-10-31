@@ -3,6 +3,16 @@ html {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+  width: 12px !important;
+}
+::-webkit-scrollbar-thumb {
+  background-color: tomato;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 
 @tailwind base;
 @tailwind components;
