@@ -32,7 +32,7 @@ const Intro = () => {
             Front-End Developer
           </h1>
           <div className="flex items-center justify-center gap-10">
-            <a href="" target="_blank">
+            <a href="muhammedrasalvm_cv.pdf" target="_blank">
               <button className="p-5 border-2 rounded hover:bg-red-400 sm:p-3">
                 Get my resume
               </button>
