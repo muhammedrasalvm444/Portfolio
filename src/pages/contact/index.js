@@ -1,10 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../Components/Layout";
+import { AOS } from "aos";
 
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top when the component mounts
   }, []);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const response = await fetch("https://formspree.io/f/mzblwbjw", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        setLoading(false);
+        alert("Form submitted successfully!");
+      } else {
+        setLoading(false);
+        alert("Form submission failed.");
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+    }
+  };
+
   return (
     <Layout>
       <div>
@@ -21,12 +60,20 @@ const Contact = () => {
         <div className="flex justify-center w-screen md:w-full ">
           <div className="w-1/2 p-10 border-2 shadow-2xl md:w-full md:p-5">
             <h1 className="mb-10 text-3xl font-semibold">Contact Me</h1>
-            <form id="contactForm " className="space-y-5">
+            <form
+              action="https://formspree.io/f/mzblwbjw"
+              method="post"
+              id="contactForm "
+              className="space-y-5"
+              onSubmit={handleSubmit}
+            >
               <input
                 placeholder="Name"
                 type="text"
                 id="name"
                 name="name"
+                value={formData.name}
+                onChange={handleChange}
                 required
                 className="w-full p-3 border-2 border-gray-500 "
               />
@@ -38,6 +85,8 @@ const Contact = () => {
                 name="email"
                 required
                 placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full p-3 border-2 border-gray-500 shadow-md"
               />
               <br></br>
@@ -46,15 +95,18 @@ const Contact = () => {
                 name="message"
                 // required
                 placeholder="Message"
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full p-4 border-2 border-gray-500 shadow-md"
               ></textarea>
               <br></br>
 
-              <input
+              <button
                 type="submit"
-                value="Submit"
                 className="p-4 text-white bg-red-400 rounded shadow-md cursor-pointer hover:bg-black"
-              />
+              >
+                {loading ? "Submitting.." : "Submit"}
+              </button>
             </form>
           </div>
         </div>
