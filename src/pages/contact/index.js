@@ -48,7 +48,7 @@ const Contact = () => {
     <Layout>
       <div>
         {" "}
-        <div className="h-screen mt-10">
+        <div className="h-screen mt-10 sm:h-auto">
           <lottie-player
             src="https://lottie.host/4205ccef-5c4c-4742-bbfa-951cb892cf33/pgGKM5eTbc.json"
             background="transparent"
