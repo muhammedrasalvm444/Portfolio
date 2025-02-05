@@ -10,7 +10,7 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState("md:hidden");
   const navList = [
     { name: "Home", path: "/" },
-    { name: "Projects", path: "/projects" },
+    // { name: "Projects", path: "/projects" },
     { name: "Contact", path: "/contact" },
   ];
   const location = useLocation();
